@@ -49,6 +49,10 @@
       "value": "600",
       "required": false
     },
+    "WORKER_COUNT": {
+      "description": "Maximum number of processes should bot handle at a time to control overload on bot default value is 20.",
+      "required": false
+    },
     "TRACK_CHANNEL": {
       "description": "User activity tracking channel's id. Only needed if you want to track and block any user. Disabled by default.",
       "required": false
