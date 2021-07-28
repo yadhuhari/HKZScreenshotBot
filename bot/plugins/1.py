@@ -23,10 +23,12 @@ async def _(c, m):
 
 async def foo(c, m, cb=False):
     chat_id = m.from_user.id
-    if int(time.time()) - c.CHAT_FLOOD[chat_id] < Config.SLOW_SPEED_DELAY:
+    time_waited = int(time.time()) - c.CHAT_FLOOD[chat_id]
+    if time_waited < Config.SLOW_SPEED_DELAY:
         if cb:
             try:
-                alert_text = f"⏱ Please wait for {(int(time.time()) - c.CHAT_FLOOD[chat_id]).timedelta(seconds=start_at)}"
+                wait_time = Config.SLOW_SPEED_DELAY - time_waited
+                alert_text = f"⏱ Please wait for {datetime.timedelta(seconds=wait_time)}"
                 await m.answer(alert_text, show_alert=True)
             except Exception:
                 pass
