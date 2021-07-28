@@ -26,7 +26,7 @@ async def foo(c, m, cb=False):
     if int(time.time()) - c.CHAT_FLOOD[chat_id] < Config.SLOW_SPEED_DELAY:
         if cb:
             try:
-                alert_text = f"⏱ Please wait for {int(time.time()) - c.CHAT_FLOOD[chat_id]}"
+                alert_text = f"⏱ Please wait for {(int(time.time()) - c.CHAT_FLOOD[chat_id]).timedelta(seconds=start_at)}"
                 await m.answer(alert_text, show_alert=True)
             except Exception:
                 pass
