@@ -1,7 +1,5 @@
 import logging
 
-import nest_asyncio
-nest_asyncio.apply()
 from .screenshotbot import ScreenShotBot
 from .config import Config
 
