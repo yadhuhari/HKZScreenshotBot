@@ -46,7 +46,7 @@ class ScreenshotsProcess(BaseProcess):
             await self.track_user_activity()
             start_time = time.time()
             await self.input_message.edit_message_text(ms.SCREENSHOTS_START)
-            duration = await Utilities.get_duration(await self.file_link)
+            duration = await Utilities.get_duration(self.file_link)
             if isinstance(duration, str):
                 raise ScreenshotsProcessFailure(
                     for_user=ms.CANNOT_OPEN_FILE,
@@ -60,7 +60,7 @@ class ScreenshotsProcess(BaseProcess):
             log.info(
                 "Generating %s screenshots from location: %s for %s",
                 num_screenshots,
-                await self.file_link,
+                self.file_link,
                 self.chat_id,
             )
 
@@ -97,7 +97,7 @@ class ScreenshotsProcess(BaseProcess):
                 "-ss",
                 "",  # To be replaced in loop
                 "-i",
-                await self.file_link,
+                self.file_link,
                 "-vf",
                 watermark_options,
                 "-y",
@@ -159,7 +159,7 @@ class ScreenshotsProcess(BaseProcess):
                     raise ScreenshotsProcessFailure(
                         for_user=ms.SCREENSHOT_PROCESS_FAILED,
                         for_admin=ms.SCREENSHOTS_FAILED_GENERATION.format(
-                            file_link=(await self.file_link), num_screenshots=num_screenshots
+                            file_link=(self.file_link), num_screenshots=num_screenshots
                         ),
                         extra_details=error_file,
                     )
