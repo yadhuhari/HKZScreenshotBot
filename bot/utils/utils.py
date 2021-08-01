@@ -75,7 +75,10 @@ class Utilities:
     @staticmethod
     async def generate_stream_link(media_msg):
         location = f"./DOWNLOADS/{media_msg.from_user.id}{media_msg.message_id}"
-        media_location = await media_msg.download(location)
+        media = media_msg.document or media_msg.video
+        media_location = f'{location}/{media.file_name}'
+        if not os.path.exists(media_location):
+            media_location = await media_msg.download(location)
         return media_location
 
     @staticmethod
