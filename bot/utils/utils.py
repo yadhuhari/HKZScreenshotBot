@@ -1,11 +1,12 @@
 import os
+import time
 import random
 import asyncio
 import logging
 from urllib.parse import urljoin
 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
+from pyrogram.emoji import *
 from bot.config import Config
 
 
@@ -73,13 +74,40 @@ class Utilities:
         return thumb_file
 
     @staticmethod
-    async def generate_stream_link(media_msg):
+    async def generate_stream_link(media_msg, status_msg):
         location = f"./DOWNLOADS/{media_msg.from_user.id}{media_msg.message_id}/"
         media = media_msg.document or media_msg.video
         media_location = f'{location}{media.file_name}'
         if not os.path.exists(media_location):
-            media_location = await media_msg.download(location)
+            media_location = await media_msg.download(
+                file_name=location,
+                progress=progress_bar,
+                progress_args=(start_time, status_msg)
+            )
         return media_location
+
+    @staticmethod
+    async def progress_bar(current, total, start, msg):
+        present = time.time()
+        if round((present - start) % 3) == 0 or current == total:
+            speed = current / (present - start)
+            percentage = current * 100 / total
+            time_to_complete = round(((total - current) / speed)) * 1000
+            time_to_complete = TimeFormatter(time_to_complete)
+            progressbar = "[{0}{1}]".format(\
+                ''.join([f"{BLACK_MEDIUM_SMALL_SQUARE}" for i in range(math.floor(percentage / 10))]),
+                ''.join([f"{WHITE_MEDIUM_SMALL_SQUARE}" for i in range(10 - math.floor(percentage / 10))])
+            )
+            current_message = f"**Downloading:** {round(percentage, 2)}%"
+            current_message += f"{progressbar}"
+            current_message += f"{HOLLOW_RED_CIRCLE} **Speed**: {humanbytes(speed)}/s"
+            current_message += f"{HOLLOW_RED_CIRCLE} **Done**: {humanbytes(current)}"
+            current_message += f"{HOLLOW_RED_CIRCLE} **Size**: {humanbytes(total)}"
+            current_message += f"{HOLLOW_RED_CIRCLE} **Time Left**: {time_to_complete}"
+        try:
+            await msg.edit(text=current_message)
+        except:
+            pass
 
     @staticmethod
     async def get_media_info(file_link):
