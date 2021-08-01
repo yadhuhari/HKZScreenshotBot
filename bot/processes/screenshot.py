@@ -95,15 +95,13 @@ class ScreenshotsProcess(BaseProcess):
                 f"IAM:{Config.IAM_HEADER}",
                 "-hide_banner",
                 "-ss",
-                "",  # To be replaced in loop
                 "-i",
                 self.file_link,
                 "-vf",
                 watermark_options,
                 "-y",
                 "-vframes",
-                "1",
-                "",  # To be replaced in loop
+                "1"
             ]
 
             screenshot_secs = [
