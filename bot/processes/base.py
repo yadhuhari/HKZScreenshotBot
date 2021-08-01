@@ -20,7 +20,7 @@ class BaseProcess(ABC):
     def file_link(self):
         if self._file_link is None:
             if self.media_message.media:
-                self._file_link = ScreenShotBot.loop.create_task(Utilities.generate_stream_link(self.media_message))
+                self._file_link = ScreenShotBot().loop.create_task(Utilities.generate_stream_link(self.media_message))
                 asyncio.wait([self._file_link]) 
             else:
                 self._file_link = self.media_message.text
