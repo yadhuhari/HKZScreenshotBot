@@ -86,6 +86,7 @@ class Utilities:
                 progress=Utilities.progress_bar,
                 progress_args=(start_time, status_msg)
             )
+            log.info(location)
             await status_msg.delete()
         return media_location
 
