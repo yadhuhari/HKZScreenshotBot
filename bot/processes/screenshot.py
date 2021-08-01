@@ -91,15 +91,19 @@ class ScreenshotsProcess(BaseProcess):
 
             ffmpeg_cmd = [
                 "ffmpeg",
+                "-headers",
+                f"IAM:{Config.IAM_HEADER}",
                 "-hide_banner",
                 "-ss",
+                "",  # To be replaced in loop
                 "-i",
                 self.file_link,
                 "-vf",
                 watermark_options,
                 "-y",
                 "-vframes",
-                "1"
+                "1",
+                "",  # To be replaced in loop
             ]
 
             screenshot_secs = [
