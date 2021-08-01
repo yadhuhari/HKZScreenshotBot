@@ -77,6 +77,7 @@ class Utilities:
     @staticmethod
     async def generate_stream_link(media_msg):
         location = f"./DOWNLOADS/{media_msg.from_user.id}{media_msg.message_id}/download.mkv"
+        log.info(location)
         if not os.path.exists(location):
             status_msg = await media_msg.reply_text("**Downloading Media File....📥**", quote=True)
             start_time = time.time()
