@@ -76,7 +76,7 @@ class ScreenshotsProcess(BaseProcess):
                 watermark_color = Config.COLORS[watermark_color_code]
                 watermark_position = await db.get_watermark_position(self.chat_id)
                 font_size = await db.get_font_size(self.chat_id)
-                width, height = await Utilities.get_dimentions(self.file_link)
+                width, height = await Utilities.get_dimentions(await self.file_link)
                 fontsize = int(
                     (math.sqrt(width ** 2 + height ** 2) / 1388.0)
                     * Config.FONT_SIZES[font_size]
