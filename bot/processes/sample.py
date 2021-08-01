@@ -72,7 +72,7 @@ class SampleVideoProcess(BaseProcess):
                 )
                 ffmpeg_cmd = [
                     "ffmpeg",
-                    "-hide_banner",
+                    #"-hide_banner",
                     "-ss",
                     str(start_at),
                     "-i",
