@@ -29,7 +29,7 @@ async def _(c, m):
 
     if m.media:
         await snt.edit("**Downloading Media File.... **📥")
-        file_link = Utilities.generate_stream_link(m)
+        file_link = await Utilities.generate_stream_link(m)
     else:
         file_link = m.text
 
