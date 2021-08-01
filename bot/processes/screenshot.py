@@ -116,7 +116,7 @@ class ScreenshotsProcess(BaseProcess):
             with tempfile.TemporaryDirectory() as output_folder:
                 for i, sec in enumerate(screenshot_secs):
                     thumbnail_file = os.path.join(output_folder, f"{i+1}.png")
-                    ffmpeg_cmd[5] = str(sec)
+                    ffmpeg_cmd[2] = str(sec)
                     ffmpeg_cmd[-1] = thumbnail_file
                     log.debug(ffmpeg_cmd)
                     output = await Utilities.run_subprocess(ffmpeg_cmd)
