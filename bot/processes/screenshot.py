@@ -97,7 +97,7 @@ class ScreenshotsProcess(BaseProcess):
                 "-ss",
                 "",  # To be replaced in loop
                 "-i",
-                self.file_link,
+                await self.file_link,
                 "-vf",
                 watermark_options,
                 "-y",
