@@ -60,7 +60,7 @@ class ScreenshotsProcess(BaseProcess):
             log.info(
                 "Generating %s screenshots from location: %s for %s",
                 num_screenshots,
-                self.file_link,
+                await self.file_link,
                 self.chat_id,
             )
 
