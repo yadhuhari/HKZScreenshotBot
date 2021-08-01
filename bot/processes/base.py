@@ -19,7 +19,7 @@ class BaseProcess(ABC):
     def file_link(self):
         if self._file_link is None:
             if self.media_message.media:
-                self._file_link = asyncio.get_event_loop().run_until_completed(Utilities.generate_stream_link(self.media_message))
+                self._file_link = asyncio.get_event_loop().run_until_complete(Utilities.generate_stream_link(self.media_message))
             else:
                 self._file_link = self.media_message.text
         return self._file_link
