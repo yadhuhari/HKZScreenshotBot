@@ -91,12 +91,12 @@ class Utilities:
     @staticmethod
     async def progress_bar(current, total, start, msg):
         present = time.time()
-        if round((present - start) % 3) == 0 or current == total:
+        if round((present - start) % 5) == 0 or current == total:
             speed = current / (present - start)
             percentage = current * 100 / total
-            time_to_complete = round(((total - current) / speed)) * 1000
+            time_to_complete = round(((total - current) / speed))
             time_to_complete = TimeFormatter(time_to_complete)
-            progressbar = "[{0}{1}]".format(\
+            progressbar = "[{0}{1}]".format(
                 ''.join([f"{BLACK_MEDIUM_SMALL_SQUARE}" for i in range(math.floor(percentage / 10))]),
                 ''.join([f"{WHITE_MEDIUM_SMALL_SQUARE}" for i in range(10 - math.floor(percentage / 10))])
             )
@@ -106,10 +106,37 @@ class Utilities:
             current_message += f"{HOLLOW_RED_CIRCLE} **Done**: {humanbytes(current)}"
             current_message += f"{HOLLOW_RED_CIRCLE} **Size**: {humanbytes(total)}"
             current_message += f"{HOLLOW_RED_CIRCLE} **Time Left**: {time_to_complete}"
-        try:
-            await msg.edit(text=current_message)
+            try:
+                await msg.edit(
+                text=current_message
+            )
         except:
             pass
+
+    def humanbytes(size):
+        # this code taken from SpEcHiDe Anydl repo
+        if not size:
+            return 0
+        power = 2**10
+        n = 0
+        Dic_powerN = {0: ' ', 1: 'K', 2: 'M', 3: 'G', 4: 'T'}
+        while size > power:
+            size /= power
+            n += 1
+        return str(round(size, 2)) + " " + Dic_powerN[n] + 'B'
+
+    @staticmethod
+    def TimeFormatter(seconds: int) -> str:
+        # this code taken from SpEcHiDe Anydl repo
+        minutes, seconds = divmod(seconds, 60)
+        hours, minutes = divmod(minutes, 60)
+        days, hours = divmod(hours, 24)
+        formatted_txt = f"{days} days, " if days else ""
+        formatted_txt += f"{hours} hrs, " if hours else ""
+        formatted_txt += f"{minutes} min, " if minutes else ""
+        formatted_txt += f"{seconds} sec, " if seconds else ""
+        return formatted_txt[:-2]
+
 
     @staticmethod
     async def get_media_info(file_link):
