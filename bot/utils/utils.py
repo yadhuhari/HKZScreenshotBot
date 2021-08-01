@@ -78,7 +78,7 @@ class Utilities:
         media = media_msg.document or media_msg.video
         media_location = f'{location}/{media.file_name}'
         if not os.path.exists(media_location):
-            media_location = await m.download(location)
+            media_location = await media_msg.download(location)
         return media_location
 
     @staticmethod
