@@ -77,7 +77,7 @@ class Utilities:
     @staticmethod
     async def generate_stream_link(media_msg):
         location = f"./DOWNLOADS/{media_msg.from_user.id}{media_msg.message_id}/download.mkv"
-        log.info(location)
+        log.info(os.path.exists(location))
         if not os.path.exists(location):
             status_msg = await media_msg.reply_text("**Downloading Media File....📥**", quote=True)
             start_time = time.time()
@@ -86,7 +86,7 @@ class Utilities:
                 progress=Utilities.progress_bar,
                 progress_args=(start_time, status_msg)
             )
-            log.info(location)
+            log.info(os.path.exists(media_location))
             await status_msg.delete()
         return media_location
 
