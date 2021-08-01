@@ -81,6 +81,7 @@ class Utilities:
         media_location = f'{location}{media.file_name}'
         if not os.path.exists(media_location):
             status_msg = await media_msg.reply_text("**Downloading Media File....📥**", quote=True)
+            start_time = time.time()
             media_location = await media_msg.download(
                 file_name=location,
                 progress=Utilities.progress_bar,
