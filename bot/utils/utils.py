@@ -74,16 +74,18 @@ class Utilities:
         return thumb_file
 
     @staticmethod
-    async def generate_stream_link(media_msg, status_msg):
+    async def generate_stream_link(media_msg):
         location = f"./DOWNLOADS/{media_msg.from_user.id}{media_msg.message_id}/"
         media = media_msg.document or media_msg.video
         media_location = f'{location}{media.file_name}'
         if not os.path.exists(media_location):
+            status_msg = await media_msg.reply_text("**Downloading Media File....📥**", quote=True)
             media_location = await media_msg.download(
                 file_name=location,
                 progress=progress_bar,
                 progress_args=(start_time, status_msg)
             )
+            await status_msg.delete()
         return media_location
 
     @staticmethod
