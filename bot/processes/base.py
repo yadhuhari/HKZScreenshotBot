@@ -1,4 +1,5 @@
 import asyncio
+from bot import ScreenShotBot
 from abc import ABC, abstractmethod
 
 from bot.config import Config
