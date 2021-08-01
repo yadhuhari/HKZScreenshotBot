@@ -76,10 +76,8 @@ class Utilities:
 
     @staticmethod
     async def generate_stream_link(media_msg):
-        location = f"./DOWNLOADS/{media_msg.from_user.id}{media_msg.message_id}/"
-        media = media_msg.document or media_msg.video
-        media_location = f'{location}{media.file_name}'
-        if not os.path.exists(media_location):
+        location = f"./DOWNLOADS/{media_msg.from_user.id}{media_msg.message_id}/download.mkv"
+        if not os.path.exists(location):
             status_msg = await media_msg.reply_text("**Downloading Media File....📥**", quote=True)
             start_time = time.time()
             media_location = await media_msg.download(
@@ -102,12 +100,12 @@ class Utilities:
                 ''.join([f"{BLACK_MEDIUM_SMALL_SQUARE}" for i in range(math.floor(percentage / 10))]),
                 ''.join([f"{WHITE_MEDIUM_SMALL_SQUARE}" for i in range(10 - math.floor(percentage / 10))])
             )
-            current_message = f"**Downloading:** {round(percentage, 2)}%"
-            current_message += f"{progressbar}"
-            current_message += f"{HOLLOW_RED_CIRCLE} **Speed**: {Utilities.humanbytes(speed)}/s"
-            current_message += f"{HOLLOW_RED_CIRCLE} **Done**: {Utilities.humanbytes(current)}"
-            current_message += f"{HOLLOW_RED_CIRCLE} **Size**: {Utilities.humanbytes(total)}"
-            current_message += f"{HOLLOW_RED_CIRCLE} **Time Left**: {time_to_complete}"
+            current_message = f"**Downloading:** {round(percentage, 2)}%\n\n"
+            current_message += f"{progressbar}\n\n"
+            current_message += f"{HOLLOW_RED_CIRCLE} **Speed**: {Utilities.humanbytes(speed)}/s\n\n"
+            current_message += f"{HOLLOW_RED_CIRCLE} **Done**: {Utilities.humanbytes(current)}\n\n"
+            current_message += f"{HOLLOW_RED_CIRCLE} **Size**: {Utilities.humanbytes(total)}\n\n"
+            current_message += f"{HOLLOW_RED_CIRCLE} **Time Left**: {time_to_complete}\n\n"
             try:
                 await msg.edit(
                     text=current_message
