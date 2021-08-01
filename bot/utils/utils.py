@@ -1,4 +1,5 @@
 import os
+import math
 import time
 import random
 import asyncio
@@ -82,7 +83,7 @@ class Utilities:
             status_msg = await media_msg.reply_text("**Downloading Media File....📥**", quote=True)
             media_location = await media_msg.download(
                 file_name=location,
-                progress=progress_bar,
+                progress=Utilities.progress_bar,
                 progress_args=(start_time, status_msg)
             )
             await status_msg.delete()
@@ -95,16 +96,16 @@ class Utilities:
             speed = current / (present - start)
             percentage = current * 100 / total
             time_to_complete = round(((total - current) / speed))
-            time_to_complete = TimeFormatter(time_to_complete)
+            time_to_complete = Utilities.TimeFormatter(time_to_complete)
             progressbar = "[{0}{1}]".format(
                 ''.join([f"{BLACK_MEDIUM_SMALL_SQUARE}" for i in range(math.floor(percentage / 10))]),
                 ''.join([f"{WHITE_MEDIUM_SMALL_SQUARE}" for i in range(10 - math.floor(percentage / 10))])
             )
             current_message = f"**Downloading:** {round(percentage, 2)}%"
             current_message += f"{progressbar}"
-            current_message += f"{HOLLOW_RED_CIRCLE} **Speed**: {humanbytes(speed)}/s"
-            current_message += f"{HOLLOW_RED_CIRCLE} **Done**: {humanbytes(current)}"
-            current_message += f"{HOLLOW_RED_CIRCLE} **Size**: {humanbytes(total)}"
+            current_message += f"{HOLLOW_RED_CIRCLE} **Speed**: {Utilities.humanbytes(speed)}/s"
+            current_message += f"{HOLLOW_RED_CIRCLE} **Done**: {Utilities.humanbytes(current)}"
+            current_message += f"{HOLLOW_RED_CIRCLE} **Size**: {Utilities.humanbytes(total)}"
             current_message += f"{HOLLOW_RED_CIRCLE} **Time Left**: {time_to_complete}"
             try:
                 await msg.edit(
