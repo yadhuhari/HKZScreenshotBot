@@ -108,11 +108,12 @@ class Utilities:
             current_message += f"{HOLLOW_RED_CIRCLE} **Time Left**: {time_to_complete}"
             try:
                 await msg.edit(
-                text=current_message
-            )
-        except:
-            pass
+                    text=current_message
+                )
+            except:
+                pass
 
+    @staticmethod
     def humanbytes(size):
         # this code taken from SpEcHiDe Anydl repo
         if not size:
@@ -136,7 +137,6 @@ class Utilities:
         formatted_txt += f"{minutes} min, " if minutes else ""
         formatted_txt += f"{seconds} sec, " if seconds else ""
         return formatted_txt[:-2]
-
 
     @staticmethod
     async def get_media_info(file_link):
