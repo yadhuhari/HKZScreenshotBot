@@ -46,7 +46,7 @@ class ScreenshotsProcess(BaseProcess):
             await self.track_user_activity()
             start_time = time.time()
             await self.input_message.edit_message_text(ms.SCREENSHOTS_START)
-            duration = await Utilities.get_duration(self.file_link)
+            duration = await Utilities.get_duration(await self.file_link)
             if isinstance(duration, str):
                 raise ScreenshotsProcessFailure(
                     for_user=ms.CANNOT_OPEN_FILE,
