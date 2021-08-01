@@ -46,7 +46,7 @@ class ScreenshotsProcess(BaseProcess):
             await self.track_user_activity()
             start_time = time.time()
             await self.input_message.edit_message_text(ms.SCREENSHOTS_START)
-            duration = await Utilities.get_duration(await self.file_link)
+            duration = await Utilities.get_duration(self.file_link)
             if isinstance(duration, str):
                 raise ScreenshotsProcessFailure(
                     for_user=ms.CANNOT_OPEN_FILE,
@@ -76,7 +76,7 @@ class ScreenshotsProcess(BaseProcess):
                 watermark_color = Config.COLORS[watermark_color_code]
                 watermark_position = await db.get_watermark_position(self.chat_id)
                 font_size = await db.get_font_size(self.chat_id)
-                width, height = await Utilities.get_dimentions(await self.file_link)
+                width, height = await Utilities.get_dimentions(self.file_link)
                 fontsize = int(
                     (math.sqrt(width ** 2 + height ** 2) / 1388.0)
                     * Config.FONT_SIZES[font_size]
