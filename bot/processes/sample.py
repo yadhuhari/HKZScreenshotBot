@@ -72,8 +72,6 @@ class SampleVideoProcess(BaseProcess):
                 )
                 ffmpeg_cmd = [
                     "ffmpeg",
-                    "-headers",
-                    f"IAM:{Config.IAM_HEADER}",
                     "-hide_banner",
                     "-ss",
                     str(start_at),
