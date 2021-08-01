@@ -73,10 +73,10 @@ class Utilities:
         return thumb_file
 
     @staticmethod
-    def generate_stream_link(media_msg):
-        file_id = media_msg.message_id
-        chat_id = media_msg.chat.id
-        return urljoin(Config.HOST, f"file/{chat_id}/{file_id}")
+    async def generate_stream_link(media_msg):
+        location = f"./DOWNLOADS/{media_msg.from_user.id}{media_msg.message_id}"
+        media_location = await m.download(location)
+        return media_location
 
     @staticmethod
     async def get_media_info(file_link):
