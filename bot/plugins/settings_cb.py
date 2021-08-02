@@ -76,7 +76,7 @@ async def settings_cb(c, m):
         alert_text = f"Successfully changed watermark position to {Config.POSITIONS[current_pos]}"
 
 
-    #i dont like this already if you want you can add so that i am not removeing anything 
+    #i dont like this alert if you want you can add so that i am not removeing anything 
     await m.answer() #alert_text, show_alert=True) 
 
     await Utilities.display_settings(c, m, db, cb=True)
