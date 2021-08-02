@@ -2,7 +2,7 @@ import time
 import datetime
 
 from pyrogram import filters
-
+from bot.utils import Utilities
 from bot.screenshotbot import ScreenShotBot
 from bot.config import Config
 from bot.database import Database
@@ -33,14 +33,14 @@ async def foo(c, m, cb=False):
         if cb:
             if not m.data.startswisth("set"):
                 try:
-                    c.CHAT_FLOOD[chat_id] = int(time.time())
                     return await m.answer(text, show_alert=True)
                 except:
                     pass
         else:
             if not m.text and not m.text.startswith("/"):
-                c.CHAT_FLOOD[chat_id] = int(time.time())
                 return await m.reply_text(text, quote=True)
+
+    c.CHAT_FLOOD[chat_id] = int(time.time())
 
     if not await db.is_user_exist(chat_id):
         await db.add_user(chat_id)
