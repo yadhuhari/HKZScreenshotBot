@@ -30,13 +30,12 @@ async def _(c, m):
     if m.media:
         await snt.delete()
         file_link = await Utilities.generate_stream_link(m)
+        snt = await m.reply_text(
+            "Getting Your data...",
+            quote=True,
+        ) 
     else:
         file_link = m.text
-
-    snt = await m.reply_text(
-        "DOWNLOADED!",
-        quote=True,
-    ) 
 
     duration = await Utilities.get_duration(file_link)
     if isinstance(duration, str):
