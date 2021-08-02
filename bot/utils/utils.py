@@ -298,31 +298,31 @@ class Utilities:
         genmode = "Equally spaced" if screenshot_mode == 0 else "Random screenshots"
 
         sv_btn = [
-            InlineKeyboardButton("⏱ Sample video Duration", "set+sv"),
+            InlineKeyboardButton("⏱ Sample video Duration", "rf"),
             InlineKeyboardButton(f"{sample_duration}s", "set+sv")
         ]
         wc_btn = [
-            InlineKeyboardButton("🎨 Watermark Color", "set+wc"),
+            InlineKeyboardButton("🎨 Watermark Color", "rf"),
             InlineKeyboardButton(f"{Config.COLORS[watermark_color_code]}", "set+wc")
         ]
         fs_btn = [
-            InlineKeyboardButton(f"𝔸𝕒 Watermark Font Size", "set+fs"),
+            InlineKeyboardButton(f"𝔸𝕒 Watermark Font Size", "rf"),
             InlineKeyboardButton(f"{Config.FONT_SIZES_NAME[font_size]}", "set+fs")
         ]
         wp_btn = [
-            InlineKeyboardButton("🎭 Watermark Position", "set+wp"),
+            InlineKeyboardButton("🎭 Watermark Position", "rf"),
             InlineKeyboardButton(f"{Config.POSITIONS[watermark_position]}", "set+wp")
         ]
         as_file_btn = [
-            InlineKeyboardButton("📤 Upload Mode", "set+af"),
+            InlineKeyboardButton("📤 Upload Mode", "rf"),
             InlineKeyboardButton(f"{mode_txt}", "set+af")
         ]
         wm_btn = [
-            InlineKeyboardButton("💧 Watermark", "set+wm"),
+            InlineKeyboardButton("💧 Watermark", "rf"),
             InlineKeyboardButton(f"{wm_txt}", "set+wm")
         ]
         sm_btn = [
-            InlineKeyboardButton("📸 SS Gen Mode", "set+sm"),
+            InlineKeyboardButton("📸 SS Gen Mode", "rf"),
             InlineKeyboardButton(f"{genmode}", "set+sm")
         ]
 
