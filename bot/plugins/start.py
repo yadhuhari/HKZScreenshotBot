@@ -22,10 +22,13 @@ async def start(c, m, cb=False):
     TEXT += "your video files and also can trim. For more details check help.",
 
     if cb:
-        await m.message.edit(
-            text=TEXT
-            reply_markup=InlineKeyboardMarkup(BUTTONS)
-        )
+        try:
+            await m.message.edit(
+                text=TEXT
+                reply_markup=InlineKeyboardMarkup(BUTTONS)
+            )
+        except:
+            pass
     else:
         await m.reply_text(
             text=TEXT
@@ -33,6 +36,23 @@ async def start(c, m, cb=False):
             reply_markup=InlineKeyboardMarkup(BUTTONS)
         )
 
+
+# i generally liked to use regex filters for callback 
+# but since odysseusmax used lambda i am also using the same
 @ScreenShotBot.on_callback_query(
-    filters.create(lambda _, __, query: query.data.startswith("set")))
-async def settings_cb(c, m):
+    filters.create(lambda _, __, query: query.data.startswith("home"))
+)
+async def home_cb(c, m):
+    await m.answer()
+    await start(c, m, True)
+
+
+@ScreenShotBot.on_callback_query(
+    filters.create(lambda _, __, query: query.data.startswith("close"))
+)
+async def close_cb(c, m):
+    try:
+        await m.delete()
+        await m.message.reply_to_message.delete()
+    except:
+        pass
