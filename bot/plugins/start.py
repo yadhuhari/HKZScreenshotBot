@@ -14,8 +14,8 @@ async def start(c, m, cb=False):
         owner = await c.get_users(owners_id)
         username = owner.username if owner.username else 'Ns_AnoNymous'
         mention = owner.mention(style="md")
-    except:
-        pass
+    except Exception as e:
+        print(e)
 
     BUTTONS = [[
         InlineKeyboardButton("My Father 🧔", url=f"https://t.me/{username}"),
