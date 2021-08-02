@@ -31,7 +31,7 @@ async def foo(c, m, cb=False):
         text += "requests to reduce overload. \n\nSo kindly please cooperate with us."
 
     if cb:
-        if not m.data.startswith("set"):
+        if not m.data.startswith("set") & m.data not in ['home', 'help', 'close']:
             try:
                 if consumed_time < Config.SLOW_SPEED_DELAY:
                     return await m.answer(text, show_alert=True)
