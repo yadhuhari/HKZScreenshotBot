@@ -308,7 +308,8 @@ class Utilities:
         ]
         as_file_btn = [InlineKeyboardButton("📤 Upload Mode: ", "rj")]
         wm_btn = [InlineKeyboardButton("💧 Watermark:", "rj")]
-        sm_btn = [InlineKeyboardButton("📸 Screenshot Generation Mode", "rj")]
+        genmode = "Equally spaced screenshots" if screenshot_mode == 0 else "Random screenshots"
+        sm_btn = [InlineKeyboardButton(f"📸 Screenshot Generation Mode: {genmode}", "set+sm")]
 
         if as_file:
             as_file_btn.append(
@@ -321,11 +322,6 @@ class Utilities:
             wm_btn.append(InlineKeyboardButton(f"{watermark_text}", "set+wm"))
         else:
             wm_btn.append(InlineKeyboardButton("No watermark exists!", "set+wm"))
-
-        if screenshot_mode == 0:
-            sm_btn.append(InlineKeyboardButton("Equally spaced screenshots", "set+sm"))
-        else:
-            sm_btn.append(InlineKeyboardButton("Random screenshots", "set+sm"))
 
         settings_btn = [as_file_btn, wm_btn, wc_btn, fs_btn, wp_btn, sv_btn, sm_btn]
 
