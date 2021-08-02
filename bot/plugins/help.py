@@ -44,3 +44,9 @@ async def help_(c, m):
         ),
         quote=True,
     )
+
+
+@ScreenShotBot.on_callback_query(
+    filters.create(lambda _, __, query: query.data.startswith("help"))
+)
+async def settings_cb(c, m):
