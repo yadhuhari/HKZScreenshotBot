@@ -335,9 +335,9 @@ class Utilities:
 
         if cb:
             try:
-                await m.edit(text=Messages.SETTINGS, reply_markup=InlineKeyboardMarkup(settings_btn))
-            except Exception as e:
-                log.info(e)
+                await m.message.edit(text=Messages.SETTINGS, reply_markup=InlineKeyboardMarkup(settings_btn))
+            except:
+                pass
             return
 
         await m.reply_text(
