@@ -52,7 +52,7 @@ async def home_cb(c, m):
 )
 async def close_cb(c, m):
     try:
-        await m.delete()
+        await m.message.delete()
         await m.message.reply_to_message.delete()
     except:
         pass
