@@ -21,7 +21,7 @@ async def start(c, m, cb=False):
         InlineKeyboardButton("My Father 🧔", url=f"https://t.me/{username}"),
         InlineKeyboardButton("Updates Channel 🔰", url="https://t.me/Ns_bot_updates")
         ],[
-        InlineKeyboardButton("Source code 😎", url="https://github.com/odysseusmax/animated-lamp")
+        InlineKeyboardButton("Source code 😎", url="https://github.com/Ns-AnoNymouS/animated-lamp")
         ],[
         InlineKeyboardButton("Help ⁉️", callback_data="help"),
         InlineKeyboardButton("Settings ⚙", callback_data="set+settings")
