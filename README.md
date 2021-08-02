@@ -1,3 +1,8 @@
+# Added Heroku Support 😋
+I had removed host in this repo so there is a less chances of heroku suspension 
+For now it is not suspended by heroku but dont know when it gonna suspended.
+Since i had removed host bot will download the entire file and then generate screenshots
+
 # [Screenshotit_bot](https://tx.me/screenshotit_bot)
 
 > Telegram Bot For Screenshot Generation.
