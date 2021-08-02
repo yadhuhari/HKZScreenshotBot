@@ -39,7 +39,7 @@ async def foo(c, m, cb=False):
             except:
                 pass
     else:
-        if not m.text and not m.text.startswith("/"):
+        if (m.text and not m.text.startswith("/")) or (m.caption):
             try:
                 c.CHAT_FLOOD[chat_id] = int(time.time())
                 if consumed_time < Config.SLOW_SPEED_DELAY:
