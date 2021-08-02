@@ -19,7 +19,7 @@ async def start(c, m):
                 InlineKeyboardButton("Source code 😎", url="https://github.com/odysseusmax/animated-lamp")
             ],[
                 InlineKeyboardButton("Help ⁉️", callback_data="help"),
-                InlineKeyboardButton("Settings ⚙", callback_data="settings")
+                InlineKeyboardButton("Settings ⚙", callback_data="set+settings")
             ],[
                 InlineKeyboardButton("Close 📛", callback_data="close")
             ]]
