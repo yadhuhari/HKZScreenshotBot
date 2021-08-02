@@ -57,8 +57,8 @@
       "required": false
     },
     "SLOW_SPEED_DELAY": {
-      "description": "Delay required between each request. Defaults to 15s.",
-      "value": "15",
+      "description": "Delay required between each request. Defaults to 5s.",
+      "value": "5",
       "required": false
     } 
   },
