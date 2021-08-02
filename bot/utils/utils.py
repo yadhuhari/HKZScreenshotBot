@@ -347,7 +347,7 @@ class Utilities:
             if i == 10:
                 btns.append(i_keyboard)
         btns.extend([
-            InlineKeyboardButton("Manual Screenshots 📸", "mscht")
+            InlineKeyboardButton("Manual Screenshots 📸", "mscht"),
             InlineKeyboardButton("Trim Video 🛠", "trim")
         ])
         btns.append([InlineKeyboardButton("Get Media Information 📋", "mi")])
