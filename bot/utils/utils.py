@@ -313,7 +313,7 @@ class Utilities:
             InlineKeyboardButton(f"📤 Upload Mode: {mode_txt}", "set+af")
         ]
         wm_btn = [
-            InlineKeyboardButton("💧 Watermark:", "set+wm")
+            InlineKeyboardButton(f"💧 Watermark: {wm_txt}", "set+wm")
         ]
         sm_btn = [
             InlineKeyboardButton(f"📸 SS Gen Mode: {genmode}", "set+sm")
@@ -338,14 +338,15 @@ class Utilities:
     def gen_ik_buttons():
         btns = []
         i_keyboard = []
-        for i in range(2, 11):
+        btn_txt = ['2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟']
+        for i in btn_txt:
             i_keyboard.append(InlineKeyboardButton(f"{i}", f"scht+{i}"))
             if (i > 2) and (i % 2) == 1:
                 btns.append(i_keyboard)
                 i_keyboard = []
             if i == 10:
                 btns.append(i_keyboard)
-        btns.append([InlineKeyboardButton("Manual Screenshots 🦋", "mscht")])
-        btns.append([InlineKeyboardButton("Trim Video 💢", "trim")])
-        btns.append([InlineKeyboardButton("Get Media Information 📋", "mi")])
+        btns.append([InlineKeyboardButton("Manual Screenshots 📸", "mscht")])
+        btns.append([InlineKeyboardButton("Trim Video 🛠", "trim")])
+        btns.append([InlineKeyboardButton("Get Media Information 📚", "mi")])
         return btns
