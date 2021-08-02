@@ -1,13 +1,24 @@
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+from bot.config import Config
 from ..screenshotbot import ScreenShotBot
 
 
 @ScreenShotBot.on_message(filters.private & filters.command("start"))
 async def start(c, m, cb=False):
+    owner_id = Config.AUTH_USERS[0]
+    username = 'Ns_AnoNymous'
+    mention = '[Anonymous](https://t.me/Ns_AnoNymous)'
+    try:
+        owner = await c.get_me(owners_id)
+        username = owner.username if owner.username else 'Ns_AnoNymous'
+        mention = owner.mention(style="md")
+    except:
+        pass
+
     BUTTONS = [[
-        InlineKeyboardButton("My Father 🧔", url="https://t.me/Ns_AnoNymous"),
+        InlineKeyboardButton("My Father 🧔", url=f"https://t.me/{username}"),
         InlineKeyboardButton("Updates Channel 🔰", url="https://t.me/Ns_bot_updates")
         ],[
         InlineKeyboardButton("Source code 😎", url="https://github.com/odysseusmax/animated-lamp")
@@ -19,7 +30,8 @@ async def start(c, m, cb=False):
     ]]
 
     TEXT = f"👋 Hi {m.from_user.mention},\n\nI'm Screenshot Generator Bot. I can provide screenshots, sample video from "
-    TEXT += "your video files and also can trim. For more details check help."
+    TEXT += "your video files and also can trim. For more details check help.\n\n"
+    TEXT += f"**Maintained By:** {mention}"
 
     if cb:
         try:
