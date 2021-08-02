@@ -50,6 +50,6 @@ async def _(c, m):
         btns.append([InlineKeyboardButton("Generate Sample Video 📽", "smpl")])
 
     await snt.edit_text(
-        text=f"Choose one of the options.\n\nTotal duration: `{datetime.timedelta(seconds=duration)}` (`{duration}s`)",
+        text=f"__Choose one of the options 🧐.__\n\n**⏰ Total duration:** `{datetime.timedelta(seconds=duration)}` (`{duration}s`)",
         reply_markup=InlineKeyboardMarkup(btns),
     )
