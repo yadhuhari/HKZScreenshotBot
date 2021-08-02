@@ -30,17 +30,23 @@ async def foo(c, m, cb=False):
         text += f"there is a delay of {Utilities.TimeFormatter(seconds=Config.SLOW_SPEED_DELAY)} b/w "
         text += "requests to reduce overload. \n\nSo kindly please cooperate with us."
 
-        if cb:
-            if not m.data.startswisth("set"):
-                try:
+    if cb:
+        if not m.data.startswisth("set"):
+            try:
+                c.CHAT_FLOOD[chat_id] = int(time.time())
+                if consumed_time < Config.SLOW_SPEED_DELAY:
                     return await m.answer(text, show_alert=True)
-                except:
-                    pass
-        else:
-            if not m.text and not m.text.startswith("/"):
-                return await m.reply_text(text, quote=True)
+            except:
+                pass
+    else:
+        if not m.text and not m.text.startswith("/"):
+            try:
+                c.CHAT_FLOOD[chat_id] = int(time.time())
+                if consumed_time < Config.SLOW_SPEED_DELAY:
+                    return await m.reply_text(text, quote=True)
+            except:
+                pass
 
-    c.CHAT_FLOOD[chat_id] = int(time.time())
 
     if not await db.is_user_exist(chat_id):
         await db.add_user(chat_id)
