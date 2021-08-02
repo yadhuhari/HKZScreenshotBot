@@ -18,7 +18,7 @@ async def settings_cb(c, m):
     except Exception:
         _, typ = m.data.split("+")
     chat_id = m.from_user.id
-    alert_text = "Not supported action."
+    alert_text = None
 
     if typ == "af":
         as_file = await db.is_as_file(chat_id)
