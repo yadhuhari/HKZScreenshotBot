@@ -293,6 +293,9 @@ class Utilities:
         watermark_position = await db.get_watermark_position(chat_id)
         screenshot_mode = await db.get_screenshot_mode(chat_id)
         font_size = await db.get_font_size(chat_id)
+        mode_txt = "Document" if as_file else "Image"
+        wm_txt = watermark_text if watermark_text else "No watermark exists!"
+        genmode = "Equally spaced screenshots" if screenshot_mode == 0 else "Random screenshots"
 
         sv_btn = [
             InlineKeyboardButton(f"⏱ Sample video Duration: {sample_duration}s", "set+sv")
@@ -306,18 +309,15 @@ class Utilities:
         wp_btn = [
             InlineKeyboardButton(f"🎭 Watermark Position: {Config.POSITIONS[watermark_position]}", "set+wp")
         ]
-        as_file_btn = [InlineKeyboardButton("📤 Upload Mode: ", "rj")]
-        wm_txt = watermark_text if watermark_text else "No watermark exists!"
-        wm_btn = [InlineKeyboardButton("💧 Watermark:", "set+wm")]
-        genmode = "Equally spaced screenshots" if screenshot_mode == 0 else "Random screenshots"
-        sm_btn = [InlineKeyboardButton(f"📸 SS Gen Mode: {genmode}", "set+sm")]
-
-        if as_file:
-            as_file_btn.append(
-                InlineKeyboardButton("📁 Document", "set+af")
-            )
-        else:
-            as_file_btn.append(InlineKeyboardButton("🖼️ Image", "set+af"))
+        as_file_btn = [
+            InlineKeyboardButton(f"📤 Upload Mode: {mode_txt}", "set+af")
+        ]
+        wm_btn = [
+            InlineKeyboardButton("💧 Watermark:", "set+wm")
+        ]
+        sm_btn = [
+            InlineKeyboardButton(f"📸 SS Gen Mode: {genmode}", "set+sm")
+        ]
 
         settings_btn = [as_file_btn, wm_btn, wc_btn, fs_btn, wp_btn, sv_btn, sm_btn]
 
