@@ -33,17 +33,19 @@ async def foo(c, m, cb=False):
     if cb:
         if not m.data.startswith("set"):
             try:
-                c.CHAT_FLOOD[chat_id] = int(time.time())
                 if consumed_time < Config.SLOW_SPEED_DELAY:
                     return await m.answer(text, show_alert=True)
+                else:
+                    c.CHAT_FLOOD[chat_id] = int(time.time())
             except:
                 pass
     else:
         if (m.text and not m.text.startswith("/")) or (m.caption):
             try:
-                c.CHAT_FLOOD[chat_id] = int(time.time())
                 if consumed_time < Config.SLOW_SPEED_DELAY:
                     return await m.reply_text(text, quote=True)
+                else:
+                    c.CHAT_FLOOD[chat_id] = int(time.time())
             except:
                 pass
 
