@@ -81,7 +81,7 @@ class Utilities:
             status_msg = await media_msg.reply_text("**Downloading Media File....📥**", quote=True)
             start_time = time.time()
             media_location = await media_msg.download(
-                file_name=location,
+                file_name=media_location,
                 progress=Utilities.progress_bar,
                 progress_args=(start_time, status_msg)
             )
