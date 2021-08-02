@@ -335,13 +335,13 @@ class Utilities:
 
         if cb:
             try:
-                await m.edit(text=Message.SETTINGS, reply_markup=InlineKeyboardMarkup(settings_btn))
+                await m.edit(text=Messages.SETTINGS, reply_markup=InlineKeyboardMarkup(settings_btn))
             except Exception:
                 pass
             return
 
         await m.reply_text(
-            text=Message.SETTINGS,
+            text=Messages.SETTINGS,
             quote=True,
             reply_markup=InlineKeyboardMarkup(settings_btn),
         )
