@@ -298,13 +298,13 @@ class Utilities:
             InlineKeyboardButton(f"⏰ Sample video Duration: {sample_duration}s", "set+sv")
         ]
         wc_btn = [
-            InlineKeyboardButton("🎨 Watermark Color: {Config.COLORS[watermark_color_code]}", "set+wc")
+            InlineKeyboardButton(f"🎨 Watermark Color: {Config.COLORS[watermark_color_code]}", "set+wc")
         ]
         fs_btn = [
             InlineKeyboardButton(f"𝔸𝕒 Watermark Font Size: {Config.FONT_SIZES_NAME[font_size]}", "set+fs")
         ]
         wp_btn = [
-            InlineKeyboardButton("🎯 Watermark Position: {Config.POSITIONS[watermark_position]}", "set+wp")
+            InlineKeyboardButton(f"🎯 Watermark Position: {Config.POSITIONS[watermark_position]}", "set+wp")
         ]
         as_file_btn = [InlineKeyboardButton("📤 Upload Mode: ", "rj")]
         wm_btn = [InlineKeyboardButton("💧 Watermark:", "rj")]
