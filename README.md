@@ -52,7 +52,6 @@ Properly setup the environment variables or populate `config.py` with the values
 * `LOG_CHANNEL`(required) - Log channel's id.
 * `DATABASE_URL`(required) - Mongodb database URI.
 * `AUTH_USERS`(required) - Admin(s) of the bot. User's telegram id separated by space. Atleast one id should be specified.
-* `HOST`(required) - Public URL of file streaming service ([See Setting up Streaming Service](#setting-up-streaming-service)).
 * `SESSION_NAME`(optional) - Name you want to call your bot's session, Eg: bot's username.
 * `MAX_PROCESSES_PER_USER`(optional) - Number of parallel processes each user can have, defaults to 2.
 * `MAX_TRIM_DURATION`(optional) - Maximum allowed video trim duration in seconds. Defaults to 600s.
@@ -60,7 +59,6 @@ Properly setup the environment variables or populate `config.py` with the values
 * `SLOW_SPEED_DELAY`(optional) - Delay required between each interaction from users in seconds. Defaults to 5s.
 * `TIMEOUT` (optional) - Maximum time alloted to each process in seconds, after which process will be cancelled. Defaults to 1800s(30 mins).
 * `DEBUG` (optional) - Set some value to use DEBUG logging level. INFO by default.
-* `IAM_HEADER` (optional) - Authentication token for streaming service. Defaults to `''`.
 * `WORKER_COUNT` (optional) - Number of process to be handled at a time. Defaults to `20`.
 
 ### Run bot
@@ -80,6 +78,7 @@ The streaming service can be a custom version of [TgFileStream](https://github.c
 **General commands**
 
 * `/start` - Command to start bot or check whether bot is alive.
+* `/help` - Command to know about how to use bot.
 * `/settings` - Command to configure bot's behavior'
 * `/set_watermark` - Command to add custom watermark text to screenshots. Usage: `/set_watermark watermark_text`.
 
@@ -113,12 +112,12 @@ In bot settings.
 Contributions are welcome.
 
 ## Contact
-You can contact me [@odysseusmax](https://tx.me/odysseusmax).
+You can contact me 
 
 ## Thanks
 Thanks to [Dan](https://github.com/delivrance "Dan") for his [Pyrogram](https://github.com/pyrogram/pyrogram "Pyrogram") library.
 
-Thanks to [Tulir Asokan](https://github.com/tulir "Tulir Asokan") for his [TgFileStream](https://github.com/tulir/tgfilestream "TgFileStream") Bot.
+Thanks to [odysseusmax](https://github.com/odysseusmax) for his [Animated Lamp](https://github.com/odysseusmax/animated-lamp "Animated Lamp").
 
 ## Dependencies
 * pyrogram
