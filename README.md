@@ -67,10 +67,6 @@ Properly setup the environment variables or populate `config.py` with the values
 
 Now go and `/start` the bot. If everything went right, bot will respond with welcome message.
 
-## Setting up Streaming Service
-
-The streaming service can be a custom version of [TgFileStream](https://github.com/tulir/tgfilestream), modded to work with this setup. The mod basicaly is adding a type of header based authentication and changing the endpoints. The authentication part is optional and the endpoint used here is `/file/:chat_id/:message_id`. Make sure to note these changes when deploying your own instance. The streaming service used for [@screenshotit_bot](https://tx.me/screenshotit_bot "Screenshot Generator Bot") is not related to [TgFileStream](https://github.com/tulir/tgfilestream) and I do not plan to make it OSS.
-
 ## Supported commands and functions
 
 ### Commands
@@ -114,10 +110,16 @@ Contributions are welcome.
 ## Contact
 You can contact me 
 
+## Credits 
+All credits goes to [odysseusmax](https://github.com/odysseusmax) he had made everything the best i just 
+Changed some small things to make the bot supported by heroku.
+
+
 ## Thanks
+Thanks to [odysseusmax](https://github.com/odysseusmax) for his [Animated Lamp](https://github.com/odysseusmax/animated-lamp "Animated Lamp").
+
 Thanks to [Dan](https://github.com/delivrance "Dan") for his [Pyrogram](https://github.com/pyrogram/pyrogram "Pyrogram") library.
 
-Thanks to [odysseusmax](https://github.com/odysseusmax) for his [Animated Lamp](https://github.com/odysseusmax/animated-lamp "Animated Lamp").
 
 ## Dependencies
 * pyrogram
