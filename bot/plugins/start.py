@@ -19,12 +19,12 @@ async def start(c, m, cb=False):
     ]]
 
     TEXT = "👋 Hi {m.from_user.mention},\n\nI'm Screenshot Generator Bot. I can provide screenshots, sample video from "
-    TEXT += "your video files and also can trim. For more details check help.",
+    TEXT += "your video files and also can trim. For more details check help."
 
     if cb:
         try:
             await m.message.edit(
-                text=TEXT
+                text=TEXT,
                 reply_markup=InlineKeyboardMarkup(BUTTONS)
             )
         except:
