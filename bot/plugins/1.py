@@ -31,7 +31,7 @@ async def foo(c, m, cb=False):
         text += "requests to reduce overload. \n\nSo kindly please cooperate with us."
 
     if cb:
-        if not m.data.startswisth("set"):
+        if not m.data.startswith("set"):
             try:
                 c.CHAT_FLOOD[chat_id] = int(time.time())
                 if consumed_time < Config.SLOW_SPEED_DELAY:
