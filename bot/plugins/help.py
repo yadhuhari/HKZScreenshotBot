@@ -57,7 +57,7 @@ async def help_(c, m):
     filters.create(lambda _, __, query: query.data.startswith("help"))
 )
 async def help_cb(c, m):
-
+    await m.answer()
     await m.message.edit(
         text=HELP_TEXT.format(
             mention=m.from_user.mention,
