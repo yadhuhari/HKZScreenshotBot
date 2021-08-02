@@ -350,5 +350,5 @@ class Utilities:
             [InlineKeyboardButton("Manual Screenshots 📸", "mscht")],
             [InlineKeyboardButton("Trim Video 🛠", "trim")]
         )
-        btns.append([InlineKeyboardButton("Get Media Information 📚", "mi")])
+        btns.append([InlineKeyboardButton("Get Media Information 📋", "mi")])
         return btns
