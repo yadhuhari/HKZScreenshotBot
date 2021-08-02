@@ -310,19 +310,19 @@ class Utilities:
             InlineKeyboardButton(f"{Config.FONT_SIZES_NAME[font_size]}", "set+fs")
         ]
         wp_btn = [
-            InlineKeyboardButton("🎭 Watermark Position", "set+wp")
+            InlineKeyboardButton("🎭 Watermark Position", "set+wp"),
             InlineKeyboardButton(f"{Config.POSITIONS[watermark_position]}", "set+wp")
         ]
         as_file_btn = [
-            InlineKeyboardButton("📤 Upload Mode", "set+af")
+            InlineKeyboardButton("📤 Upload Mode", "set+af"),
             InlineKeyboardButton(f"{mode_txt}", "set+af")
         ]
         wm_btn = [
-            InlineKeyboardButton("💧 Watermark", "set+wm")
+            InlineKeyboardButton("💧 Watermark", "set+wm"),
             InlineKeyboardButton(f"{wm_txt}", "set+wm")
         ]
         sm_btn = [
-            InlineKeyboardButton("📸 SS Gen Mode", "set+sm")
+            InlineKeyboardButton("📸 SS Gen Mode", "set+sm"),
             InlineKeyboardButton(f"{genmode}", "set+sm")
         ]
 
