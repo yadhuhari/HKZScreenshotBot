@@ -295,31 +295,31 @@ class Utilities:
         font_size = await db.get_font_size(chat_id)
 
         sv_btn = [
-            InlineKeyboardButton("Sample Video Duration", "rj"),
+            InlineKeyboardButton("⏰ Sample Video Duration", "rj"),
             InlineKeyboardButton(f"{sample_duration}s", "set+sv"),
         ]
         wc_btn = [
-            InlineKeyboardButton("Watermark Color", "rj"),
+            InlineKeyboardButton("🌈 Watermark Color", "rj"),
             InlineKeyboardButton(f"{Config.COLORS[watermark_color_code]}", "set+wc"),
         ]
         fs_btn = [
-            InlineKeyboardButton("Watermark Font Size", "rj"),
+            InlineKeyboardButton("♲︎︎︎ Watermark Font Size", "rj"),
             InlineKeyboardButton(f"{Config.FONT_SIZES_NAME[font_size]}", "set+fs"),
         ]
         wp_btn = [
-            InlineKeyboardButton("Watermark Position", "rj"),
+            InlineKeyboardButton("📊 Watermark Position", "rj"),
             InlineKeyboardButton(f"{Config.POSITIONS[watermark_position]}", "set+wp"),
         ]
         as_file_btn = [InlineKeyboardButton("Upload Mode", "rj")]
-        wm_btn = [InlineKeyboardButton("Watermark", "rj")]
-        sm_btn = [InlineKeyboardButton("Screenshot Generation Mode", "rj")]
+        wm_btn = [InlineKeyboardButton("💧 Watermark", "rj")]
+        sm_btn = [InlineKeyboardButton("📸 Screenshot Generation Mode", "rj")]
 
         if as_file:
             as_file_btn.append(
-                InlineKeyboardButton("📁 Uploading as Document.", "set+af")
+                InlineKeyboardButton("📁 Document.", "set+af")
             )
         else:
-            as_file_btn.append(InlineKeyboardButton("🖼️ Uploading as Image.", "set+af"))
+            as_file_btn.append(InlineKeyboardButton("🖼️ Image.", "set+af"))
 
         if watermark_text:
             wm_btn.append(InlineKeyboardButton(f"{watermark_text}", "set+wm"))
