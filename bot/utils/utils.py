@@ -9,7 +9,7 @@ from urllib.parse import urljoin
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.emoji import *
 from bot.config import Config
-
+from bot.messages import Messages
 
 log = logging.getLogger(__name__)
 
@@ -335,13 +335,13 @@ class Utilities:
 
         if cb:
             try:
-                await m.edit_message_reply_markup(InlineKeyboardMarkup(settings_btn))
+                await m.edit(text=Message.SETTINGS, reply_markup=InlineKeyboardMarkup(settings_btn))
             except Exception:
                 pass
             return
 
         await m.reply_text(
-            text="Here You can configure my behavior.\n\nPress the button to change the settings.",
+            text=Message.SETTINGS,
             quote=True,
             reply_markup=InlineKeyboardMarkup(settings_btn),
         )
