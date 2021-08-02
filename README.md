@@ -1,4 +1,4 @@
-# [Screenshotit_bot](https://tx.me/screenshotit_bot)
+# [Screenshotit_bot](https://tx.me/disneyteamscreenshotsbot)
 
 > Telegram Bot For Screenshot Generation. Check Description for the live example 
 
@@ -14,7 +14,7 @@ An attempt to implement the screenshot generation of telegram files. Live versio
 
 ## Installation Guide
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/Ns-AnoNymouS/screenshot-bot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/disneyteam77/screenshot-bot)
 
 ### Prerequisites
 
@@ -93,72 +93,5 @@ Now go and `/start` the bot. If everything went right, bot will respond with wel
 start - Command to start bot or check whether bot is alive.
 help - Command to know about how to use bot.
 settings - Command to configure bot's behavior'
-set_watermark - Command to add custom watermark text to screenshots. Usage: `/set_watermark watermark_text`.
-```
-
-**Admin commands**
-
-> Any user specified in `AUTH_USERS` can use these commands.
-
-```
-admin - to check available admin commands
-status - Returns number of total users.
-ban_user - Command to ban any user. Usage: `/ban_user user_id ban_duration ban_reason`. `user_id` - telegram id of the user, `ban_duration` - ban duration in days, `ban_reason` - reason for ban. All 3 parameters are required.
-unban_user - Command to unban any banned user. Usage: `/unban_user user_id`. `user_id` - telegram id of the user. The parameter is required.
-banned_users - Command to view all banned users. Usage: `/banned_users`. This takes no parameters.
-broadcast - Command to broadcast some message to all users. Usage: reply `/broadcast` to the message you want to broadcast.
-```
-
-### Functions
-* `Screenshot Generation` - Generates screenshots from telegram video files or streaming links. Number of screenshots range from 2-10.
-
-* `Sample Video Generation` - Generates sample video from telegram video files or streaming links. Video duration range from 30s to 150s. Configurable in `/settings`.
-
-* `Video Trimming` - Trims any telegram video files or streaming links.
-
-### Settings
-In bot settings.
-
-* `Upload Mode` - Screenshot upload mode. Either `as image file` or `as document file`. Defaults to `as image file`.
-
-* `Watermark` - Watermark text to be embedded to screenshots. Texts upto 30 characters supported. Disabled by default.
-
-* `Watermark Color` - Font color to be used for watermark. Any of `white`, `black`, `red`, `blue`, `green`, `yellow`, `orange`, `purple`, `brown`, `gold`, `silver`, `pink`. Defaults to `white`.
-
-* `Watermark Font Size` - Font size to be used for watermarks. Any of `small(30)`, `medium(40)`, `large(50)`. Defaults to `medium`.
-
-* `Watermark Position` - Watermark text's position. Defaults to `bottom left`.
-
-* `Sample Video Duration` - Sample video's duration. Any of `30s`, `60s`, `90s`, `120s`, `150s`. Defaults to `30s`.
-
-* `Screenshot Genetation Mode` - Either `random` or `equally spaced`. Defaults to `equally spaced`.
-
-
-## Contributions
-Contributions are welcome.
-
-## Contact
-You can contact me 
-
-## Credits 
-All credits goes to [odysseusmax](https://github.com/odysseusmax) he had made everything the best i just 
-Changed some small things to make the bot supported by heroku.
-
-
-## Thanks
-Thanks to [odysseusmax](https://github.com/odysseusmax) for his [Animated Lamp](https://github.com/odysseusmax/animated-lamp "Animated Lamp").
-
-Thanks to [Dan](https://github.com/delivrance "Dan") for his [Pyrogram](https://github.com/pyrogram/pyrogram "Pyrogram") library.
-
-
-## Dependencies
-* pyrogram
-* tgcrypto
-* motor
-* dnspython
-* async-timeout
-* aiohttp
-
-
-## License
-Code released under [The GNU General Public License](LICENSE).
+set_watermark - Command to add custom watermark text to screenshots. Usage: 
+---
