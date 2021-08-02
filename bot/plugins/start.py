@@ -31,7 +31,7 @@ async def start(c, m, cb=False):
             pass
     else:
         await m.reply_text(
-            text=TEXT
+            text=TEXT,
             quote=True,
             reply_markup=InlineKeyboardMarkup(BUTTONS)
         )
