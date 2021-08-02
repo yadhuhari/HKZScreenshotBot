@@ -295,28 +295,35 @@ class Utilities:
         font_size = await db.get_font_size(chat_id)
         mode_txt = "Document" if as_file else "Image"
         wm_txt = watermark_text if watermark_text else "No watermark exists!"
-        genmode = "Equally spaced screenshots" if screenshot_mode == 0 else "Random screenshots"
+        genmode = "Equally spaced" if screenshot_mode == 0 else "Random screenshots"
 
         sv_btn = [
-            InlineKeyboardButton(f"⏱ Sample video Duration: {sample_duration}s", "set+sv")
+            InlineKeyboardButton("⏱ Sample video Duration", "set+sv"),
+            InlineKeyboardButton(f"{sample_duration}s", "set+sv")
         ]
         wc_btn = [
-            InlineKeyboardButton(f"🎨 Watermark Color: {Config.COLORS[watermark_color_code]}", "set+wc")
+            InlineKeyboardButton("🎨 Watermark Color", "set+wc"),
+            InlineKeyboardButton(f"{Config.COLORS[watermark_color_code]}", "set+wc")
         ]
         fs_btn = [
-            InlineKeyboardButton(f"𝔸𝕒 Watermark Font Size: {Config.FONT_SIZES_NAME[font_size]}", "set+fs")
+            InlineKeyboardButton(f"𝔸𝕒 Watermark Font Size", "set+fs"),
+            InlineKeyboardButton(f"{Config.FONT_SIZES_NAME[font_size]}", "set+fs")
         ]
         wp_btn = [
-            InlineKeyboardButton(f"🎭 Watermark Position: {Config.POSITIONS[watermark_position]}", "set+wp")
+            InlineKeyboardButton("🎭 Watermark Position", "set+wp")
+            InlineKeyboardButton(f"{Config.POSITIONS[watermark_position]}", "set+wp")
         ]
         as_file_btn = [
-            InlineKeyboardButton(f"📤 Upload Mode: {mode_txt}", "set+af")
+            InlineKeyboardButton("📤 Upload Mode", "set+af")
+            InlineKeyboardButton(f"{mode_txt}", "set+af")
         ]
         wm_btn = [
-            InlineKeyboardButton(f"💧 Watermark: {wm_txt}", "set+wm")
+            InlineKeyboardButton("💧 Watermark", "set+wm")
+            InlineKeyboardButton(f"{wm_txt}", "set+wm")
         ]
         sm_btn = [
-            InlineKeyboardButton(f"📸 SS Gen Mode: {genmode}", "set+sm")
+            InlineKeyboardButton("📸 SS Gen Mode", "set+sm")
+            InlineKeyboardButton(f"{genmode}", "set+sm")
         ]
 
         settings_btn = [as_file_btn, wm_btn, wc_btn, fs_btn, wp_btn, sv_btn, sm_btn]
