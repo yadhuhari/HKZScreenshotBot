@@ -6,10 +6,9 @@
    "telegram",
    "Screenshot",
    "Sample video",
-   "Trim Video",
-   "without downloading the entire file"
+   "Trim Video"
   ],
-  "repository": "https://github.com/TGExplore/Screenshot-Bot",
+  "repository": "https://github.com/Ns-AnoNymouS/animated-lamp",
   "env": {
     "API_ID": {
       "description": "Your Telegram API ID. Get this value from my.telegram.org!",
