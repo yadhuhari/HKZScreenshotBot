@@ -339,8 +339,8 @@ class Utilities:
         btns = []
         i_keyboard = []
         btn_txt = ['2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟']
-        for i in btn_txt:
-            i_keyboard.append(InlineKeyboardButton(f"{i}", f"scht+{i}"))
+        for i in range(2, 11):
+            i_keyboard.append(InlineKeyboardButton(f"{btn_txt[i-2]}", f"scht+{i}"))
             if (i > 2) and (i % 2) == 1:
                 btns.append(i_keyboard)
                 i_keyboard = []
