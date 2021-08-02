@@ -309,14 +309,14 @@ class Utilities:
         as_file_btn = [InlineKeyboardButton("📤 Upload Mode: ", "rj")]
         wm_btn = [InlineKeyboardButton("💧 Watermark:", "rj")]
         genmode = "Equally spaced screenshots" if screenshot_mode == 0 else "Random screenshots"
-        sm_btn = [InlineKeyboardButton(f"📸 Screenshot Generation Mode: {genmode}", "set+sm")]
+        sm_btn = [InlineKeyboardButton(f"📸 SS Gen Mode: {genmode}", "set+sm")]
 
         if as_file:
             as_file_btn.append(
-                InlineKeyboardButton("📁 Document.", "set+af")
+                InlineKeyboardButton("📁 Document", "set+af")
             )
         else:
-            as_file_btn.append(InlineKeyboardButton("🖼️ Image.", "set+af"))
+            as_file_btn.append(InlineKeyboardButton("🖼️ Image", "set+af"))
 
         if watermark_text:
             wm_btn.append(InlineKeyboardButton(f"{watermark_text}", "set+wm"))
