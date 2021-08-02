@@ -32,6 +32,7 @@ async def settings_cb(c, m):
             alert_text = "Successfully removed watermark text."
         else:
             alert_text = "Use /set_watermark to add new watermark text."
+        await m.answer(alert_text, show_alert=True)
 
     elif typ == "sv":
         sample_duration = await db.get_sample_duration(chat_id)
