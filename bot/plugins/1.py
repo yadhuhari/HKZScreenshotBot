@@ -27,7 +27,7 @@ async def foo(c, m, cb=False):
     if consumed_time < Config.SLOW_SPEED_DELAY:
         wait_time = Config.SLOW_SPEED_DELAY - consumed_time
         text = f"⏱ Please wait {Utilities.TimeFormatter(seconds=wait_time)}, "
-        text += f"there is a delay of {Utilities.TimeFormatter(seconds=Config.SLOW_SPEED_DELAY)} between"
+        text += f"there is a delay of {Utilities.TimeFormatter(seconds=Config.SLOW_SPEED_DELAY)} between "
         text += "requests to reduce overload. \n\nSo kindly please cooperate with us."
 
     if cb:
