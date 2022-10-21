@@ -39,7 +39,7 @@ class Broadcast:
             await self.broadcast_message.copy(chat_id=user_id)
             return 200, None
         except FloodWait as e:
-            await asyncio.sleep(e.x + 1)
+            await asyncio.sleep(e.value + 1)
             return self._send_msg(user_id)
         except InputUserDeactivated as e:
             log.error(e)

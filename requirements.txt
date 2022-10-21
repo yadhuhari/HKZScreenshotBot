@@ -1,7 +1,6 @@
-pyrogram
+pyrogram==2.0.57
 tgcrypto
 motor
 dnspython
 async-timeout
 aiohttp
-nest_asyncio
