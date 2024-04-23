@@ -1,15 +1,18 @@
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
+import random
 from bot.config import Config
 from ..screenshotbot import ScreenShotBot
 
+PICS = [
+ "https://telegra.ph/file/08834517d04e99c969615.jpg"
+]
 
 @ScreenShotBot.on_message(filters.private & filters.command("start"))
 async def start(c, m, cb=False):
     owner_id = Config.AUTH_USERS[0]
-    username = 'Ns_AnoNymous'
-    mention = '[Anonymous](https://t.me/Ns_AnoNymous)'
+    username = 'MR_HKZ_TG'
+    mention = '[𝙼𝚛. 𝙷𝙺𝚉 𝚃𝙶](https://t.me/MR_HKZ_TG)'
     try:
         owner = await c.get_users(owner_id)
         username = owner.username if owner.username else 'Ns_AnoNymous'
@@ -18,32 +21,38 @@ async def start(c, m, cb=False):
         print(e)
 
     BUTTONS = [[
-        InlineKeyboardButton("My Father 🧔", url=f"https://t.me/{username}"),
-        InlineKeyboardButton("Updates Channel 🔰", url="https://telegram.dog/NsBotsOfficial")
+        InlineKeyboardButton("Dᴇᴠᴇʟᴏᴘᴇʀ 👨‍💻", url=f"https://t.me/{username}"),
+        InlineKeyboardButton("Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ 🔰", url="https://telegram.dog/HKZTG")
         ],[
-        InlineKeyboardButton("Source code 😎", url="https://github.com/Ns-AnoNymouS/animated-lamp")
+        InlineKeyboardButton("Sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ 😎", url="https://github.com/Ns-AnoNymouS/animated-lamp")
         ],[
-        InlineKeyboardButton("Help ⁉️", callback_data="help"),
-        InlineKeyboardButton("Settings ⚙", callback_data="set+settings")
+        InlineKeyboardButton("Hᴇʟᴘ 🛠", callback_data="help"),
+        InlineKeyboardButton("Sᴇᴛᴛɪɴɢs ⚙", callback_data="set+settings")
         ],[
-        InlineKeyboardButton("Close 📛", callback_data="close")
+        InlineKeyboardButton("Cʟᴏsᴇ 📛", callback_data="close")
     ]]
-
-    TEXT = f"👋 Hi {m.from_user.mention},\n\nI'm Screenshot Generator Bot. I can provide screenshots, sample video from "
-    TEXT += "your video files and also can trim. For more details check help.\n\n"
-    TEXT += f"**Maintained By:** {mention}"
 
     if cb:
         try:
-            await m.message.edit(
-                text=TEXT,
+            await m.message.edit_photo(
+                photo=random.choice(PICS),
+                caption=f"""Hᴇʟʟᴏ 👋,
+
+I'ᴍ Sᴄʀᴇᴇɴsʜᴏᴛ Gᴇɴᴇʀᴀᴛᴏʀ Bᴏᴛ. I ᴄᴀɴ ᴘʀᴏᴠɪᴅᴇ sᴄʀᴇᴇɴsʜᴏᴛs ʏᴏᴜʀ ᴠɪᴅᴇᴏ ғɪʟᴇs. Fᴏʀ ᴍᴏʀᴇ ᴅᴇᴛᴀɪʟs ᴄʜᴇᴄᴋ ʜᴇʟᴘ
+
+Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ: {mention}""",
                 reply_markup=InlineKeyboardMarkup(BUTTONS)
             )
         except:
             pass
     else:
-        await m.reply_text(
-            text=TEXT,
+        await m.reply_photo(
+            photo=random.choice(PICS),
+            caption=f"""Hᴇʟʟᴏ 👋,
+
+I'ᴍ Sᴄʀᴇᴇɴsʜᴏᴛ Gᴇɴᴇʀᴀᴛᴏʀ Bᴏᴛ. I ᴄᴀɴ ᴘʀᴏᴠɪᴅᴇ sᴄʀᴇᴇɴsʜᴏᴛs ʏᴏᴜʀ ᴠɪᴅᴇᴏ ғɪʟᴇs. Fᴏʀ ᴍᴏʀᴇ ᴅᴇᴛᴀɪʟs ᴄʜᴇᴄᴋ ʜᴇʟᴘ
+
+Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ: {mention}""",
             quote=True,
             reply_markup=InlineKeyboardMarkup(BUTTONS)
         )
