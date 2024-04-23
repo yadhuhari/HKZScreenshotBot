@@ -1,48 +1,53 @@
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
+import random
 from bot.screenshotbot import ScreenShotBot
 from bot.config import Config
 
 
+PICS = [
+ "https://telegra.ph/file/08834517d04e99c969615.jpg"
+]
+
 BUTTONS = [[
-    InlineKeyboardButton('Home 🏡', callback_data='home'),
-    InlineKeyboardButton('Close 📛', callback_data='close')
+    InlineKeyboardButton('Hᴏᴍᴇ 🏡', callback_data='home'),
+    InlineKeyboardButton('Cʟᴏsᴇ 📛', callback_data='close')
 ]]
 
 HELP_TEXT = """
-Hi {mention}. Welcome to Screenshot Generator Bot. You can use me to generate:
+Hɪ {mention}. Wᴇʟᴄᴏᴍᴇ ᴛᴏ Sᴄʀᴇᴇɴsʜᴏᴛ Gᴇɴᴇʀᴀᴛᴏʀ Bᴏᴛ. Yᴏᴜ ᴄᴀɴ ᴜsᴇ ᴍᴇ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ:
 
-    1. Screenshots.
-    2. Sample Video.
-    3. Trim Video.
+    𝟷. Sᴄʀᴇᴇɴsʜᴏᴛs.
+    𝟸. Sᴀᴍᴘʟᴇ Vɪᴅᴇᴏ.
+    𝟹. Tʀɪᴍ Vɪᴅᴇᴏ.
 
-👉 I support any kind of **telegram video file** (streaming video or document video files) provided it --has proper mime-type-- and --is not corrupted--.
-👉 I also support **Streaming URLs**. The URL should be a --streaming URL--, --non IP specific--, and --should return proper response codes--.
-Just send me the telegram file or the streaming URL.
+👉 I sᴜᴘᴘᴏʀᴛ ᴀɴʏ ᴋɪɴᴅ ᴏғ ᴛᴇʟᴇɢʀᴀᴍ ᴠɪᴅᴇᴏ ғɪʟᴇ (sᴛʀᴇᴀᴍɪɴɢ ᴠɪᴅᴇᴏ ᴏʀ ᴅᴏᴄᴜᴍᴇɴᴛ ᴠɪᴅᴇᴏ ғɪʟᴇs) ᴘʀᴏᴠɪᴅᴇᴅ ɪᴛ ʜᴀs ᴘʀᴏᴘᴇʀ ᴍɪᴍᴇ-ᴛʏᴘᴇ ᴀɴᴅ ɪs ɴᴏᴛ ᴄᴏʀʀᴜᴘᴛᴇᴅ.
+👉 I ᴀʟsᴏ sᴜᴘᴘᴏʀᴛ Sᴛʀᴇᴀᴍɪɴɢ URLs. Tʜᴇ URL sʜᴏᴜʟᴅ ʙᴇ ᴀ sᴛʀᴇᴀᴍɪɴɢ URL, ɴᴏɴ IP sᴘᴇᴄɪғɪᴄ, ᴀɴᴅ sʜᴏᴜʟᴅ ʀᴇᴛᴜʀɴ ᴘʀᴏᴘᴇʀ ʀᴇsᴘᴏɴsᴇ ᴄᴏᴅᴇs.
+Jᴜsᴛ sᴇɴᴅ ᴍᴇ ᴛʜᴇ ᴛᴇʟᴇɢʀᴀᴍ ғɪʟᴇ ᴏʀ ᴛʜᴇ sᴛʀᴇᴀᴍɪɴɢ URL.
 
-See /settings to configure bot's behavior.
-Use /set_watermark to set custom watermarks to your screenshots.
+Sᴇᴇ /settings ᴛᴏ ᴄᴏɴғɪɢᴜʀᴇ ʙᴏᴛ's ʙᴇʜᴀᴠɪᴏʀ.
+Usᴇ /set_watermark ᴛᴏ sᴇᴛ ᴄᴜsᴛᴏᴍ ᴡᴀᴛᴇʀᴍᴀʀᴋs ᴛᴏ ʏᴏᴜʀ sᴄʀᴇᴇɴsʜᴏᴛs.
 
-**General FAQ.**
+Gᴇɴᴇʀᴀʟ FAQ.
 
-👉 If the bot dosen't respond to telegram files you forward, first check /start and --confirm bot is alive--. Then make sure the file is a **video file** which satisfies above mentioned conditions.
-👉 If bot replies __😟 Sorry! I cannot open the file.__, the file might be --currupted-- or --is malformatted--.
+👉 Iғ ᴛʜᴇ ʙᴏᴛ ᴅᴏsᴇɴ'ᴛ ʀᴇsᴘᴏɴᴅ ᴛᴏ ᴛᴇʟᴇɢʀᴀᴍ ғɪʟᴇs ʏᴏᴜ ғᴏʀᴡᴀʀᴅ, ғɪʀsᴛ ᴄʜᴇᴄᴋ /start ᴀɴᴅ ᴄᴏɴғɪʀᴍ ʙᴏᴛ ɪs ᴀʟɪᴠᴇ. Tʜᴇɴ ᴍᴀᴋᴇ sᴜʀᴇ ᴛʜᴇ ғɪʟᴇ ɪs ᴀ ᴠɪᴅᴇᴏ ғɪʟᴇ ᴡʜɪᴄʜ sᴀᴛɪsғɪᴇs ᴀʙᴏᴠᴇ ᴍᴇɴᴛɪᴏɴᴇᴅ ᴄᴏɴᴅɪᴛɪᴏɴs.
+👉 Iғ ʙᴏᴛ ʀᴇᴘʟɪᴇs 😟 Sᴏʀʀʏ! I ᴄᴀɴɴᴏᴛ ᴏᴘᴇɴ ᴛʜᴇ ғɪʟᴇ., ᴛʜᴇ ғɪʟᴇ ᴍɪɢʜᴛ ʙᴇ ᴄᴜʀʀᴜᴘᴛᴇᴅ ᴏʀ ɪs ᴍᴀʟғᴏʀᴍᴀᴛᴛᴇᴅ.
 
-__If issues persists contact my father.__
+Iғ ɪssᴜᴇs ᴘᴇʀsɪsᴛs ᴄᴏɴᴛᴀᴄᴛ ᴍʏ ғᴀᴛʜᴇʀ.
 
 {admin_notification}
 """
 ADMIN_NOTIFICATION_TEXT = (
-    "Since you are one of the admins, you can check /admin to view the admin commands."
+    "Sɪɴᴄᴇ ʏᴏᴜ ᴀʀᴇ ᴏɴᴇ ᴏғ ᴛʜᴇ ᴀᴅᴍɪɴs, ʏᴏᴜ ᴄᴀɴ ᴄʜᴇᴄᴋ /admin ᴛᴏ ᴠɪᴇᴡ ᴛʜᴇ ᴀᴅᴍɪɴ ᴄᴏᴍᴍᴀɴᴅs."
 )
 
 
 @ScreenShotBot.on_message(filters.private & filters.command("help"))
 async def help_(c, m):
 
-    await m.reply_text(
-        text=HELP_TEXT.format(
+    await m.reply_photo(
+        photo=random.choice(PICS),
+        caption=HELP_TEXT.format(
             mention=m.from_user.mention,
             admin_notification=ADMIN_NOTIFICATION_TEXT
             if m.from_user.id in Config.AUTH_USERS
