@@ -23,15 +23,15 @@ async def settings_cb(c, m):
     if typ == "af":
         as_file = await db.is_as_file(chat_id)
         await db.update_as_file(chat_id, not as_file)
-        alert_text = "Successfully changed screenshot upload mode!"
+        alert_text = "Sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ sᴄʀᴇᴇɴsʜᴏᴛ ᴜᴘʟᴏᴀᴅ ᴍᴏᴅᴇ!"
 
     elif typ == "wm":
         watermark_text = await db.get_watermark_text(chat_id)
         if watermark_text:
             await db.update_watermark_text(chat_id)
-            alert_text = "Successfully removed watermark text."
+            alert_text = "Sᴜᴄᴄᴇssғᴜʟʟʏ ʀᴇᴍᴏᴠᴇᴅ ᴡᴀᴛᴇʀᴍᴀʀᴋ ᴛᴇxᴛ."
         else:
-            alert_text = "Use /set_watermark to add new watermark text."
+            alert_text = "Usᴇ /set_watermark ᴛᴏ ᴀᴅᴅ ɴᴇᴡ ᴡᴀᴛᴇʀᴍᴀʀᴋ ᴛᴇxᴛ."
         await m.answer(alert_text, show_alert=True)
 
     elif typ == "sv":
@@ -40,7 +40,7 @@ async def settings_cb(c, m):
             sample_duration = 0
         sample_duration += 30
         await db.update_sample_duration(chat_id, sample_duration)
-        alert_text = f"Sample video duration changed to {sample_duration}s"
+        alert_text = f"Sᴀᴍᴘʟᴇ ᴠɪᴅᴇᴏ ᴅᴜʀᴀᴛɪᴏɴ ᴄʜᴀɴɢᴇᴅ ᴛᴏ {sample_duration}s"
 
     elif typ == "wc":
         watermark_color_code = await db.get_watermark_color(chat_id)
@@ -48,7 +48,7 @@ async def settings_cb(c, m):
             watermark_color_code = -1
         watermark_color_code += 1
         await db.update_watermark_color(chat_id, watermark_color_code)
-        alert_text = f"Successfully changed watermark text color to {Config.COLORS[watermark_color_code]}"
+        alert_text = f"Sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ᴡᴀᴛᴇʀᴍᴀʀᴋ ᴛᴇxᴛ ᴄᴏʟᴏʀ ᴛᴏ {Config.COLORS[watermark_color_code]}"
 
     elif typ == "sm":
         screenshot_mode = await db.get_screenshot_mode(chat_id)
@@ -57,7 +57,7 @@ async def settings_cb(c, m):
         else:
             screenshot_mode = 0
         await db.update_screenshot_mode(chat_id, screenshot_mode)
-        alert_text = "Successfully changed screenshot generation mode"
+        alert_text = "Sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ sᴄʀᴇᴇɴsʜᴏᴛ ɢᴇɴᴇʀᴀᴛɪᴏɴ ᴍᴏᴅᴇ."
 
     elif typ == "fs":
         font_size = await db.get_font_size(chat_id)
@@ -66,7 +66,7 @@ async def settings_cb(c, m):
         font_size += 1
         await db.update_font_size(chat_id, font_size)
         alert_text = (
-            f"Successfully changed font size to {Config.FONT_SIZES_NAME[font_size]}"
+            f"Sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ғᴏɴᴛ sɪᴢᴇ ᴛᴏ {Config.FONT_SIZES_NAME[font_size]}"
         )
     elif typ == "wp":
         current_pos = await db.get_watermark_position(chat_id)
@@ -74,7 +74,7 @@ async def settings_cb(c, m):
             current_pos = -1
         current_pos += 1
         await db.update_watermark_position(chat_id, current_pos)
-        alert_text = f"Successfully changed watermark position to {Config.POSITIONS[current_pos]}"
+        alert_text = f"Sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ᴡᴀᴛᴇʀᴍᴀʀᴋ ᴘᴏsɪᴛɪᴏɴ ᴛᴏ {Config.POSITIONS[current_pos]}"
 
 
     #i dont like this alert if you want you can add so that i am not removing anything and commented them
@@ -87,4 +87,4 @@ async def settings_cb(c, m):
     filters.create(lambda _, __, query: query.data.startswith("rj"))
 )
 async def _(c, m):
-    await m.answer("😂 press the other button 😂")
+    await m.answer("😂 ᴘʀᴇss ᴛʜᴇ ᴏᴛʜᴇʀ ʙᴜᴛᴛᴏɴ 😂")
